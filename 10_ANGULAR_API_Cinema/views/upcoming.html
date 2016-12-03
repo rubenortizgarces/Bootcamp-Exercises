@@ -1,0 +1,14 @@
+
+
+
+<h1>{{title}}</h1>
+
+
+<div class="flexruben">
+
+  <figure ng-repeat="Upcoming in Upcomings">
+    <img class="img-thumbnail" src="https://image.tmdb.org/t/p/w500/{{ Upcoming.poster_path }}"/>
+    <figcaption><h4>{{ Upcoming.title }}</h4></figcaption>
+  </figure>
+
+</div>

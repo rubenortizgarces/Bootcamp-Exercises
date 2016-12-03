@@ -1,0 +1,40 @@
+header, footer, .navbar-default {
+	background: #ccc;
+}
+
+footer {
+	margin-top: 30px;
+	padding-top: 10px;
+}
+
+img {
+	width: 220px;
+	height: 300px;
+	margin: 0px 20px 0px 20px;
+
+}
+
+h1 {
+	padding: 20px 0px 40px 0px;
+	color: #f1f1f1;
+
+}
+
+h4 {
+	padding: 0px 20px 30px 20px;
+	max-width: 210px;
+	color: #f1f1f1;
+}
+body{
+	background-image: url(/img/dark_embroidery.png);
+}
+
+.flexruben{
+	display: inline-flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	/*justify-content: space-around;*/
+
+}
+
+

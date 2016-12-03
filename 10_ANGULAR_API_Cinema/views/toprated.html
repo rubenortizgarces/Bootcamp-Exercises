@@ -1,0 +1,11 @@
+<h1>{{title}}</h1>
+
+
+<div class="flexruben">
+
+  <figure ng-repeat="rated in rateds">
+    <img class="img-thumbnail" src="https://image.tmdb.org/t/p/w500/{{ rated.poster_path }}"/>
+    <figcaption><h4>{{ rated.title }}</h4></figcaption>
+  </figure>
+
+</div>

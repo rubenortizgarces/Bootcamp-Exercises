@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>utube Project</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+</head>
+<body>
+<h1 id="title"></h1>
+<a><img id="image"></a>
+<iframe id ="iframe" src=""></iframe>
+	
+
+
+
+	<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script>
+		$.ajax({
+				url: "youtube.json",
+				dataType: 'json',
+			})
+		.done(function( youtube ){
+			$("#title").html(youtube.data.items[0].title);
+			$("#image").attr("src", youtube.data.items[0].thumbnail.hqDefault);
+			$("a").attr("href", youtube.data.items[0].player.default);
+		})
+	</script>
+</body>
+</html>

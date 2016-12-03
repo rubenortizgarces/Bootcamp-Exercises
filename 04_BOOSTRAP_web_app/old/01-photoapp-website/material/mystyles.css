@@ -1,0 +1,18 @@
+*{border:1px solid red;}
+
+
+/* Le decimo que el border y el padding los incluya dentro del tamaño de la caja*/
+*{
+    box-sizing: border-box;
+}
+/*Optimizacion legibilidad titulares*/
+.jumbotron{
+	padding: 0;
+}
+
+div.container-fluid{
+	background-image: url("img/site_showcase_bg.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}

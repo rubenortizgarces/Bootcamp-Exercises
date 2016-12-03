@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>beatles Project</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+</head>
+<Body>
+	<form class="form-inline" id="beatles_search">
+		<div class="form-group">
+			<label for="exampleInputName2">Name</label>
+			<input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe" value="nirvana">
+		</div>
+		<button type="submit" class="btn btn-default">Search</button>
+	</form>
+
+	<div id="results" class="container">
+		<form action="" class="form-inline">
+
+			<select name="" id="" class="form-control hide">
+			</select>
+			<div id="results2" class="container">
+				<form action="" class="form-inline">
+
+					<select name="" id="" class="form-control hide">
+					</select>
+
+					<ul>Here the songs</ul>
+
+
+					<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+					<script>
+						$("#beatles_search").on("submit", function(e){
+							e.preventDefault();
+							var $input=$(this).find("input");
+							var artist=$input.val();
+							var searchArtist="https://api.spotify.com/v1/search?type=artist&query=";  
+							var artistSearched=searchArtist + artist;
+
+							$.ajax({
+								url: artistSearched,
+								dataType: 'json'
+							})
+							.done(function( dataArtist ){
+								var listArtist="<option>Select artist..</option>";
+								console.log(dataArtist);
+								var artists = dataArtist.artists.items;
+
+								$.each(dataArtist.artists.items,function(i,artist){
+									listArtist+='<option value="'+artist.id+'">'+artist.name+'</option>';
+
+								})
+								$("#results select")
+								.html(listArtist)
+								.removeClass("hide");
+							})
+						})
+
+
+						$("#results select").on("change", function() {
+							$(this).find("option").first().attr("disabled", "disabled")
+							var artistId = $(this).val();
+							console.log( artistId )
+							var searchAlbum="https://api.spotify.com/v1/artists/";  
+							var albumSearch=searchAlbum + artistId +"/albums";
+
+							$.ajax({
+								url: albumSearch,
+								dataType: 'json'
+							})
+
+							.done(function( dataAlbum ){
+								var listAlbum="<option>Select album..</option>";
+								$.each(dataAlbum.items,function(i,album){
+									listAlbum+='<option value="'+album.id+'">'+album.name+'</option>';
+
+									$("#results2 select")
+									.html(listAlbum)
+									.removeClass("hide");
+
+								})
+								console.log(listAlbum);
+							})
+						})
+						$("#results2 select").on("change", function() {
+							$(this).find("option").first().attr("disabled", "disabled")
+							var albumId = $(this).val();
+							console.log( albumId )
+							var searchSongs="https://api.spotify.com/v1/albums/";  
+							var songSearch=searchSongs + albumId +"/tracks";
+							console.log(songSearch)
+							console.log(searchSongs)
+							console.log(albumId)
+
+							$.ajax({
+								url: songSearch,
+								dataType: 'json'
+							})
+							.done(function( dataTracks ){
+								var listTraks="<li>Select track..</li>";
+								$.each(dataTracks.items,function(i,track){
+									listTraks+='<li><a href="'+track.preview_url+'">'+track.name+'</li>';
+
+									$("ul").html(listTraks);
+
+								})
+
+
+
+
+							})
+						})
+
+
+
+
+					</script>
+				</Body>
+				</html>

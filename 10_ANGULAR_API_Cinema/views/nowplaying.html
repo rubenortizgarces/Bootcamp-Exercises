@@ -1,0 +1,14 @@
+
+
+
+<h1>{{title}}</h1>
+
+
+<div class="flexruben">
+
+  <figure ng-repeat="now in nows">
+    <img class="img-thumbnail" src="https://image.tmdb.org/t/p/w500/{{ now.poster_path }}"/>
+    <figcaption><h4>{{ now.title }}</h4></figcaption>
+  </figure>
+
+</div>
